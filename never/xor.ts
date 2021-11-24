@@ -22,8 +22,8 @@ const fooOrBar3: FooOrBar = { baz: "baz" };
 // @ts-expect-error
 const fooOrBar4: FooOrBar = { foo: "foo", bar: "bar" };
 
-// 必须有sharedProp，container、module至有其中一个
-// 如果去掉 Partial，则是至少有一个
+// 必须有sharedProp，container、module 至多有其中一个
+// 如果去掉 Partial，则是 container、module 必须至少有一个
 type ComposedOption = { sharedProp: string } & Partial<
   XOR<
     {

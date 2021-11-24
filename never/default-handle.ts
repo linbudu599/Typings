@@ -1,12 +1,33 @@
+function mayThrow(): number | never {
+  try {
+    return 599;
+  } catch (err) {
+    throw new Error("oops!");
+  }
+}
+
 const strOrNum: string | number = "foo";
 
 if (typeof strOrNum === "string") {
-  console.log("I am a string");
+  console.log("str!");
 } else if (typeof strOrNum === "number") {
-  console.log("I am a number");
+  console.log("num!");
 } else {
   const _exhaustiveCheck: never = strOrNum;
-  throw new Error(`Unknown type ${_exhaustiveCheck}`);
+  throw new Error(`Unknown input type: ${_exhaustiveCheck}`);
+}
+
+const strOrNumOrBool: string | number | boolean = false;
+
+if (typeof strOrNumOrBool === "string") {
+  console.log("str!");
+} else if (typeof strOrNumOrBool === "number") {
+  console.log("num!");
+} else if (typeof strOrNumOrBool === "boolean") {
+  console.log("bool!");
+} else {
+  const _exhaustiveCheck: never = strOrNumOrBool;
+  throw new Error(`Unknown input type: ${_exhaustiveCheck}`);
 }
 
 enum PossibleType {
