@@ -51,6 +51,7 @@ function checker(input: PossibleType) {
       break;
     default:
       const _exhaustiveCheck: never = input;
+      throw new Error(`Unknown input type: ${_exhaustiveCheck}`);
       break;
   }
 }
