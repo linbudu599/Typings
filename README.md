@@ -6,6 +6,11 @@
 
 ### 【已完成】TypeScript 中的 never 类型
 
+- [any、unknown](src/never/with-any-unknown.ts)
+- [约束联合类型、枚举的所有 case 被处理](src/never/default-handle.ts)
+- [工具类型](src/never/tool-type.ts)
+- [互斥类型 XOR](src/never/xor.ts)
+
 ### 【进行中】TypeScript 中的协变与逆变
 
 ### 【进行中】从 TypeScript 工具类型到类型体操，你所需要知道的一切
@@ -17,7 +22,7 @@
 - 内置的工具类型
 - 进阶工具类型
   - 递归思想的应用
-  - 期望获得
+  - 对接口 CRUD
 - 模板字符串工具类型
   - 内置工具类型
   - 字面量联合类型的分发
