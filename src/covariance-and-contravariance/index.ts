@@ -61,3 +61,20 @@ f2 = f1; // Ok
 f2 = f3; // Error
 
 // (Animal → Corgi) ≼ (Dog → Dog)
+
+function trainDog(d: Dog) {}
+function cloneAnimalAndDoSth(
+  source: Animal,
+  sth: (result: Animal) => void
+): void {}
+
+let c = new Cat();
+// @ts-expect-error
+cloneAnimalAndDoSth(c, trainDog);
+
+function checkIfAnimalsAreAwake(arr: Animal[]) {}
+
+let myPets: Dog[] = [new Dog(), new Dog()];
+
+// Error? Can't substitute Dog[] for Animal[]?
+checkIfAnimalsAreAwake(myPets);
