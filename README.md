@@ -11,7 +11,9 @@
 - [工具类型](src/never/tool-type.ts)
 - [互斥类型 XOR](src/never/xor.ts)
 
-### 【进行中】TypeScript 中的协变与逆变
+### 【已完成】TypeScript 中的协变与逆变
+
+- [covariance-and-contravariance](https://github.com/linbudu599/Typings/blob/main/src/covariance-and-contravariance/index.ts)
 
 ### 【进行中】从 TypeScript 工具类型到类型体操，你所需要知道的一切
 
