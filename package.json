@@ -4,7 +4,8 @@
   "description": "知乎/掘金专栏：TypeScript的另一面：类型编程 示例代码合集。",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sync": "git add -A && git commit -m 'sync' && git push"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,9 @@
   "homepage": "https://github.com/linbudu599/Type-Programming-in-TypeScript#readme",
   "devDependencies": {
     "tsd": "^0.19.0",
-    "typescript": "^4.5.2"
+    "typescript": "^4.6.0-beta"
+  },
+  "dependencies": {
+    "@typescript/analyze-trace": "^0.4.0"
   }
 }
