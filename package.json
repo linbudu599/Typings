@@ -24,6 +24,6 @@
     "typescript": "^4.6.0-beta"
   },
   "dependencies": {
-    "@typescript/analyze-trace": "^0.4.0"
+    "@typescript/analyze-trace": "^0.5.0"
   }
 }
