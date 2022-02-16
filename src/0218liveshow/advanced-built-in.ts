@@ -5,15 +5,15 @@ export type DeepPartial<T extends PlainObjectType> = {
 };
 
 export type DeepRequired<T extends PlainObjectType> = {
-  [K in keyof T]-?: T[K] extends object ? DeepPartial<T> : T;
+  [K in keyof T]-?: T[K] extends object ? DeepRequired<T> : T;
 };
 
 export type DeepReadonly<T extends PlainObjectType> = {
-  readonly [K in keyof T]: T[K] extends object ? DeepPartial<T> : T;
+  readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T> : T;
 };
 
 export type DeepMutable<T extends PlainObjectType> = {
-  -readonly [K in keyof T]: T[K] extends object ? DeepPartial<T> : T;
+  -readonly [K in keyof T]: T[K] extends object ? DeepMutable<T> : T;
 };
 
 export type DeepNonNullable<T extends PlainObjectType> = {

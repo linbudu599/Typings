@@ -8,11 +8,6 @@ type ExclamationMark = '!';
 type Composed = `Hello${Empty}${World}${ExclamationMark}`;
 
 // 实际使用
-interface IRes {
-  code: 200 | 400 | 500;
-  status: 'success' | 'failure';
-  mixed: true | 'wuhu!';
-}
 
 // 模板字符串类型的类型守卫
 export interface ISuccess {
@@ -27,6 +22,12 @@ export interface IError {
 
 export function isSuccess(r: ISuccess | IError): r is ISuccess {
   return r.type === 'HttpSuccess';
+}
+
+interface IRes {
+  code: 200 | 400 | 500;
+  status: 'success' | 'failure';
+  mixed: true | 'wuhu!';
 }
 
 // 重映射
