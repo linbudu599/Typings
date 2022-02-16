@@ -1,4 +1,5 @@
 import { Split } from './template-string-advanced-types';
+import { PlainObjectType } from './xor';
 
 export type WordSeparators = '-' | '_' | ' ';
 
@@ -27,17 +28,22 @@ type CamelCaseStringArray<Fragments extends readonly string[]> =
       >}`>
     : never;
 
-export type CamelCase<K> = K extends string
-  ? CamelCaseStringArray<
-      // D-D-D > d-d-d > [d, d, d]
-      Split<K extends Uppercase<K> ? Lowercase<K> : K, WordSeparators>
-    >
-  : K;
+type A = CamelCaseStringArray<['a', 'b', 'c']>;
 
-export type CamelCasedProperties<Value> = Value extends Function
-  ? Value
-  : Value extends Array<infer U>
-  ? Value
-  : {
-      [K in keyof Value as CamelCase<K>]: Value[K];
-    };
+export type CamelCase<K extends string> = CamelCaseStringArray<
+  // D-D-D > d-d-d > [d, d, d]
+  Split<K extends Uppercase<K> ? Lowercase<K> : K, WordSeparators>
+>;
+
+type SplitS<K extends string> = Split<
+  K extends Uppercase<K> ? Lowercase<K> : K,
+  WordSeparators
+>;
+
+type A1 = SplitS<'a-b-c'>;
+
+type A12 = CamelCase<'a-bd'>;
+
+export type CamelCasedProperties<Value extends PlainObjectType> = {
+  [K in keyof Value as CamelCase<string & K>]: Value[K];
+};

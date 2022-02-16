@@ -18,3 +18,13 @@ export type Join<
   ? // @ts-expect-error `Rest` is inferred as `unknown` here
     `${Strings[0]}${Delimiter}${Join<Rest, Delimiter>}`
   : string;
+
+export type TrimLeft<V extends string> = V extends ` ${infer R}`
+  ? TrimLeft<R>
+  : V;
+
+export type TrimRight<V extends string> = V extends `${infer R} `
+  ? TrimRight<R>
+  : V;
+
+export type Trim<V extends string> = TrimLeft<TrimRight<V>>;
