@@ -6,7 +6,7 @@ type CamelCase<
   Delimiter extends WordSeparators
 > = S extends `${infer Head}${Delimiter}${infer Rest}`
   ? Capitalize<Rest> extends Rest
-    ? `${Head}-${CamelCase<Rest, Delimiter>}`
+    ? `${Head}${Delimiter}${CamelCase<Rest, Delimiter>}`
     : `${Head}${CamelCase<Capitalize<Rest>, Delimiter>}`
   : S;
 
