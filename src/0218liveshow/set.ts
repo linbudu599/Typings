@@ -1,3 +1,5 @@
+export type Concurrence<A, B> = A | B;
+
 // 交集
 export type Intersection<A, B> = A extends B ? A : never;
 

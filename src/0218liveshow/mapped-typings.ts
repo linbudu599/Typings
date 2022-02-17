@@ -14,7 +14,15 @@ type StringifyA<T> = {
 };
 
 type Clone<T> = {
-  [K in keyof T]: T[K];
+  [K in keyof T as K]: T[K];
+};
+
+type Clone1<T> = {
+  [K in keyof T as 'foo']: T[K];
+};
+
+const foo: Clone1<A> = {
+  foo: true,
 };
 
 type CloneAndRemap<T> = {

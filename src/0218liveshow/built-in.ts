@@ -16,6 +16,17 @@ type Pick<T, K extends keyof T> = {
 
 type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
 
+type OmitByReMapping<T, K extends keyof T> = {
+  [Key in K as Exclude<keyof T, Key>]: T[K];
+};
+
+type Res = {
+  a: 1;
+  b: 2;
+};
+
+type _d = OmitByReMapping<Res, 'a'>;
+
 type Exclude<T, U> = T extends U ? never : T;
 
 type Extract<T, U> = T extends U ? T : never;

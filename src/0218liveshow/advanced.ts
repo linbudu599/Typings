@@ -16,6 +16,8 @@ export type PermissiveCompare<T, K, A, B, C = never> = T extends K
     : B
   : C;
 
+type _1A = Extract<'a' | 'b' | 'c', 'a' | 'b' | 'd'>;
+
 type A = StrictCompare<'a', 'a' | 'b', 1, 2>;
 
 type A1 = PermissiveCompare<'a', 'a' | 'b', 1, 2>;
