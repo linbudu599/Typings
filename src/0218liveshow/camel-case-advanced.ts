@@ -1,4 +1,5 @@
 import { Split } from './template-string-advanced-types';
+import { expectType } from 'tsd';
 import { PlainObjectType } from './xor';
 
 export type WordSeparators = '-' | '_' | ' ';
@@ -40,10 +41,13 @@ type SplitS<K extends string> = Split<
   WordSeparators
 >;
 
-type A1 = SplitS<'a-b-c'>;
+type A1 = SplitS<'a-B-c'>;
 
 type A12 = CamelCase<'a-bd'>;
 
 export type CamelCasedProperties<Value extends PlainObjectType> = {
   [K in keyof Value as CamelCase<string & K>]: Value[K];
 };
+
+const prefixSplit: Split<'--very-prefixed', '-'> = ['', '', 'very', 'prefixed'];
+expectType<['', '', 'very', 'prefixed']>(prefixSplit);

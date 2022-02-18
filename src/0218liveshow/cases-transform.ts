@@ -3,9 +3,9 @@ type SnakeCaseToCamelCase<S extends string> =
     ? `${Lowercase<P1>}${Uppercase<P2>}${SnakeCaseToCamelCase<P3>}`
     : Lowercase<S>;
 
-type KeysToCamelCase<T> = {
+type SnakeCaseKeysToCamelCase<T extends Record<string, any>> = {
   [K in keyof T as SnakeCaseToCamelCase<string & K>]: T[K] extends {}
-    ? KeysToCamelCase<T[K]>
+    ? SnakeCaseKeysToCamelCase<T[K]>
     : T[K];
 };
 
@@ -16,9 +16,11 @@ interface SnakeCase {
   };
 }
 
-const transformed: KeysToCamelCase<SnakeCase> = {
+const transformed: SnakeCaseKeysToCamelCase<SnakeCase> = {
   bazValue: {
     blahTest: 2,
   },
   barValue: 'test',
 };
+
+export {};
