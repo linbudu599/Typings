@@ -4,6 +4,7 @@ import { PlainObjectType } from './xor';
 
 export type WordSeparators = '-' | '_' | ' ';
 
+// 如果 PreviousFragment 不是 ''，就将 FirstFragment 转换为大写
 type InnerCamelCaseStringArray<
   Fragments extends readonly any[],
   PreviousFragment
