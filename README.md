@@ -12,8 +12,6 @@
 
 ### 【进行中】关于 TypeScript 工具类型你所需要知道的一切
 
-> QCon+ 直播地址：
-
 ### 【未开始】TypeScript Compiler API 快速上手
 
 ### 【未开始】幕后的得力助手：上下文类型
