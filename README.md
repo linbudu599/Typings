@@ -1,6 +1,6 @@
 # Typings
 
-林不渡的 TypeScript 分享集
+林不渡的 TypeScript 分享集，你可以在我的 [知乎专栏](https://www.zhihu.com/column/c_1446787480888053760) 找到所有的已发表文章，在 Issue 找到所有的计划中文章及草稿。
 
 ## 目录
 
@@ -11,8 +11,6 @@
 ### 【已完成】TypeScript 中的类型控制流分析演进
 
 ### 【进行中】关于 TypeScript 工具类型你所需要知道的一切
-
-> QCon+ 直播地址：
 
 ### 【未开始】TypeScript Compiler API 快速上手
 
