@@ -11,3 +11,7 @@ export type Complement<A, B extends A> = Difference<A, B>;
 
 // 对称差集
 export type SymmetricDifference<A, B> = Difference<A | B, A & B>;
+
+type _T1 = string & number;
+
+type _T2 = ('a' | 'b') & ('a' | 'd' | 'e' | 'f');
