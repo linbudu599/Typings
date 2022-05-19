@@ -85,3 +85,12 @@ type _Chain = never extends 'linbudu'
       : 1
     : 0
   : never;
+
+declare let source: 'linbudu';
+
+declare let anyType: any;
+declare let neverType: never;
+
+anyType = source;
+// 报错：
+// neverType = source;
