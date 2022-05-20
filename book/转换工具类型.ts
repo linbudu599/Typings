@@ -52,3 +52,16 @@ type EnumMemberToRecord<
       }
     : never
   : never;
+
+export type PrimitiveType =
+  | string
+  | number
+  | bigint
+  | boolean
+  | symbol
+  | null
+  | undefined;
+
+export type LiteralUnion<LiteralType, BaseType extends PrimitiveType> =
+  | LiteralType
+  | (BaseType & Record<never, never>);

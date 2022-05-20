@@ -104,12 +104,3 @@ export type SetReturnType<Fn extends (...args: any[]) => any, TypeToReturn> =
       : (this: ThisArg, ...args: Arguments) => TypeToReturn
     : // This part should be unreachable, but we make it meaningful just in case…
       (...args: Parameters<Fn>) => TypeToReturn;
-
-export type Includes<Value extends readonly any[], Item> = IsEqual<
-  Value[0],
-  Item
-> extends true
-  ? true
-  : Value extends [Value[0], ...infer rest]
-  ? Includes<rest, Item>
-  : false;
