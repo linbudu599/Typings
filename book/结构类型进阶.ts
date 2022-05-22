@@ -6,6 +6,18 @@ export type StrictCompare<T, K, A, B, C = never> = [T] extends [K]
     : B
   : C;
 
+type StrictConditional<A, B, Resolved, Rejected, Fallback = never> = [
+  A
+] extends [B]
+  ? [B] extends [A]
+    ? Resolved
+    : Rejected
+  : Fallback;
+
+type Res1 = StrictConditional<1 | 2, 1 | 2 | 3, true, false>; // false
+type Res2 = StrictConditional<1 | 2 | 3, 1 | 2, true, false, false>; // false
+type Res3 = StrictConditional<1 | 2, 1 | 2, true, false>; // true
+
 export type ValueTypeFilterPositive<
   T extends PlainObjectType,
   ValueType
@@ -16,22 +28,19 @@ export type ValueTypeFilterPositive<
   }[keyof T]
 >;
 
+type Conditional<Value, Condition, Resolved, Rejected> = Value extends Condition
+  ? Resolved
+  : Rejected;
+
 export type ValueTypeFilter<
-  T extends PlainObjectType,
+  T extends object,
   ValueType,
   Positive extends boolean
-> = Pick<
-  T,
-  {
-    [Key in keyof T]-?: T[Key] extends ValueType
-      ? Positive extends true
-        ? Key
-        : never
-      : Positive extends true
-      ? never
-      : Key;
-  }[keyof T]
->;
+> = {
+  [Key in keyof T]-?: T[Key] extends ValueType
+    ? Conditional<Positive, true, Key, never>
+    : Conditional<Positive, true, never, Key>;
+}[keyof T];
 
 export type PickByValue<T extends PlainObjectType, ValueType> = ValueTypeFilter<
   T,
@@ -69,6 +78,15 @@ export type StrictOmitByValue<
   T extends PlainObjectType,
   ValueType
 > = StrictValueTypeFilter<T, ValueType, false>;
+
+type A = StrictOmitByValue<{ foo: 1; bar: 1 | 2; baz: 1 | 2 | 3 }, 1 | 2>;
+
+type Tmp1 = 1 & (0 | 1); // 1
+type Tmp2 = 1 & number; // 1
+type Tmp3 = 1 & 1; // 1
+
+type Tmp4 = 1 & any; // 1
+type Tmp5 = 1 & unknown; // 1
 
 type IsAny<T> = 0 extends 1 & T ? true : false; // https://stackoverflow.com/a/49928360/3406963
 type IsNever<T> = [T] extends [never] ? true : false;
