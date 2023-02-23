@@ -26,7 +26,7 @@
   "dependencies": {
     "@types/lodash": "^4.14.182",
     "@types/react": "^18.0.9",
-    "@typescript/analyze-trace": "^0.4.0",
+    "@typescript/analyze-trace": "^0.10.0",
     "lodash": "^4.17.21"
   }
 }
